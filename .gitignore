@@ -1,0 +1,6 @@
+wp-content/uploads/*
+wp-content/litespeed/*
+wp-config.php
+wp-content/plugins/debug-bar
+wp-content/plugins/query-monitor
+db.php
