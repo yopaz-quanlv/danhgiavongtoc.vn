@@ -57,10 +57,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
 		<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
 	</svg>
-	<a href="tel:+84944229938" class="" style="margin-bottom: 10px;">
+	<a href="tel:+0932268778 " class="" style="margin-bottom: 10px;">
 		<img src="/icon-phone.png" alt="">
 	</a>
-	<a href="https://zalo.me/0944229938" target="_blank" class="">
+	<a href="https://zalo.me/0932268778 " target="_blank" class="">
 		<img src="/icon-zalo.png" alt="">
 	</a>
 </div>
@@ -103,10 +103,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			],
 			[
 				'title' => 'Giới thiệu',
-				'url' => '/ve-rula',
+				'url' => '/gioi-thieu',
 			],
 			[
-				'title' => 'Dịch vụ',
+				'title' => 'Sản phẩm',
 				'url' => '/dich-vu',
 				'children' => [
 						[
@@ -123,39 +123,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						],
 					]
 			],
+			// [
+			// 				'title' => 'Bảng giá',
+			// 				'url' => '/bang-gia',
+			// 			],
+			// [
+			// 	'title' => 'Dự án',
+			// 	'url' => '/danh-sach-du-an/gaming-center/',
+			// ],
 			[
-							'title' => 'Bảng giá',
-							'url' => '/bang-gia',
-						],
-			[
-				'title' => 'Dự án',
-				'url' => '/danh-sach-du-an/gaming-center/',
+				'title' => 'Nghệ nhân',
+				'url' => '/nghe-nhan',
 			],
 			[
-				'title' => 'Feedback',
-				'url' => '/feedback',
-			],
-			[
-				'title' => 'Blog',
+				'title' => 'Tin tức',
 				'url' => '/blog',
-				'children' => [
-					[
-							'title' => 'Tin game',
-							'url' => '/tin-game',
-						],
-						[
-							'title' => 'Tin chuyên ngành',
-							'url' => '/tin-chuyen-nganh',
-						],
-						[
-							'title' => 'Tuyển dụng',
-							'url' => '/category/tuyen-dung',
-						],
-						[
-							'title' => 'FAQs',
-							'url' => '/faqs',
-						],
-					]
+				
 			],
 			[
 				'title' => 'Liên hệ',
