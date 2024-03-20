@@ -1,11 +1,11 @@
 === Easy Table of Contents ===
-Contributors: shazahm1@hotmail.com
-Donate link: https://connections-pro.com/
+Contributors: magazine3
+Donate link: https://tocwp.com/
 Tags: table of contents, toc
-Requires at least: 5.3
-Tested up to: 5.7
+Requires at least: 5.0
+Tested up to: 6.4
 Requires PHP: 5.6.20
-Stable tag: 2.0.17
+Stable tag: 2.0.63
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,9 +13,11 @@ Adds a user friendly and fully automatic way to create and display a table of co
 
 == Description ==
 
-A user friendly, featured focused plugin which allows you to insert a table of contents into your posts, pages and custom post types.
+A user friendly, featured focused [Easy Table of Contents](https://tocwp.com/) plugin which allows you to insert a table of contents into your posts, pages and custom post types.
 
-= Features =
+[Home](https://tocwp.com/) | [Help & Tech Support](https://tocwp.com/contact/) | [Documentation](https://tocwp.com/docs/)  | [Pro version Features](https://tocwp.com/pricing/)
+
+### Features 
 * Automatically generate a table of contents for your posts, pages and custom post types by parsing its contents for headers.
 * Supports the `<!--nextpage-->` tag.
 * Supports the Rank Math plugin.
@@ -35,32 +37,70 @@ A user friendly, featured focused plugin which allows you to insert a table of c
 * The widgets supports being affixed or stuck on the page so it is always visible as you scroll down the page. NOTE: this is an advanced option since every theme is different, you might need support from your theme developer to learn what the correct item selector to use in the settings to enable this feature.
 * The widget auto highlights the sections currently visible on the page. The highlight color is configurable.
 * Developer friendly with many action hooks and filters available. More can be added by request on [Github](https://github.com/shazahm1/Easy-Table-of-Contents). Pull requests are welcomed.
+* An option to show toc based on dynamic paragraph count.
+* An option which Preserve Line Breaks in TOC.
+* An option to use the TOC without anchor links in the URL.
+* Support for custom taxonomy description.
+* Adds SiteNavigation Schema.
 
-= Live Examples =
+= TAKE IT A STEP FURTHER WITH EASY TABLE OF CONTENTS PRO =
+With [EASY TABLE OF CONTENTS PRO](https://tocwp.com/pricing/) You will get access to more professional Settings, options and positions to really push your TOC to the next level.
+* <strong>New - Gutenberg Block </strong>: Easily create TOC in Gutenberg block without the need of any coding or shortcode.
+* <strong>New - Elementor Widget </strong>: Easily create TOC using Elementor Widget without the need of any coding or shortcode.
+* <strong>New - Fixed/Sticky TOC </strong>: Users can find the content that they need, much faster through the option of sticky TOC.
+* <strong>New - Fixed/Sticky TOC Customization </strong>: Customize the appearance of Sticky TOC with Theme Design options.
+* <strong>New - Full AMP Support </strong>: Generates a TOC with your existing setup and make it AMP compatible automatically.
+* <strong>NEW – ACF Support </strong>: Easily create TOC with your custom ACF fields.
+* <strong>NEW – View More </strong>: Show selected number of TOC heading before user clicks to show remaining headings.
+* <strong>NEW – Read Time </strong>: Show time of read for your posts/pages.
+* <strong>NEW – Collapsable Sub Headings </strong>: Show/Hide sub headings of the Table of contents.
+* <strong>NEW – Highlight Headings </strong>: Sticky heading highlight while scrolling through the content.
 
-Here are links to documentation pages for several of the premium templates for the [Connections Business Directory plugin](https://wordpress.org/plugins/connections/) which utilize the widget included with this plugin:
+### Shortcode
 
-* [cMap Template Docs](http://connections-pro.com/documentation/cmap/)
-* [Circled Template Docs](http://connections-pro.com/documentation/circled/)
-* [Gridder Template Docs](http://connections-pro.com/documentation/gridder/)
+With Our shortcode feature you are in command of the table of contents with very little effort and even if you have little to no programming skills.
 
-= Roadmap =
+[ez-toc] Would generate the table of contents. 
+
+Below are the attibutes we support and could be useful in configuring the table of contents:
+
+[header_label="Title"] – title for the table of contents
+[display_header_label="no"] - no title for the table of contents
+[toggle_view="no"] – no toggle for the table of contents 
+[initial_view="no"] –  initially hide the table of contents 
+[display_counter="no"] – no counter for the table of contents
+[post_types="post,page"] – post types seperated by ,(comma)
+[post_in="1,2"] – ID's of the posts|pages seperated by ,(comma)
+[device_target="desktop"] – mobile or desktop device support for the table of contents
+[view_more="5"] – 5, is the number of headings loads on first view, before user interaction (PRO)
+
+### Support
+
+We try our best to provide support on WordPress.org forums. However, We have a special [team support](https://magazine3.company/contact/) where you can ask us questions and get help. Delivering a good user experience means a lot to us and so we try our best to reply each and every question that gets asked.
+
+### Bug Reports
+
+Bug reports for Easy Table of Contents are [welcomed on GitHub](https://github.com/ahmedkaludi/Easy-Table-of-Contents). Please note GitHub is not a support forum, and issues that aren't properly qualified as bugs will be closed.
+
+### [JOIN TELEGRAM GROUP COMMUNITY](https://t.me/+XADGN24lHNk0YjE1/)**: Purpose of this group is to get proper suggestions and feedback from plugin users and the community so that we can make the plugin even better.
+
+### Roadmap 
 * Fragment caching for improved performance.
-* Improve SEO by adding options to add nofollow to TOC link and wrap TOC nav in noindex tag.
 * Improve accessibility.
 * Add Bullet and Arrow options for list counter style.
+* [View Full Road Map](https://github.com/ahmedkaludi/Easy-Table-of-Contents/milestones)
 
-= Credit =
+### Credit 
 
 Easy Table Contents is a fork of the excellent [Table of Contents Plus](https://wordpress.org/plugins/table-of-contents-plus/) plugin by [Michael Tran](http://dublue.com/plugins/toc/).
 
-== Screenshots ==
+### Screenshots 
 
 1. The General section of the settings.
 2. The Appearance section of the settings.
 3. The Advanced section of the settings.
 
-== Installation ==
+### Installation 
 
 = Using the WordPress Plugin Search =
 
@@ -89,248 +129,128 @@ Easy Table Contents is a fork of the excellent [Table of Contents Plus](https://
 
 == Changelog ==
 
-= 2.0.17 03/26/2021 =
-* TWEAK: Add additional check to prevent `Uncaught Error: Call to undefined function is_woocommerce()`.
-* TWEAK: Ensure an instance of `ezTOC_Post ` is returned before accessing methods/properties.
+= 2.0.63 02/03/2024 =
+* TWEAK: Remove extra spaces added by the users to the option Exclude feature #687
+* TWEAK: HTML Validator Parse Error: Font-Size Issue #691
+* TWEAK: Proper enqueue method for sticky toc js. #696
+* Bug: Easy TOC conflicts with the Popular Post plugin. #680
+* Bug: A warning is appearing after the recent update #686
+* Bug: TOC not showing on MicrojobEngine theme #694
+* Bug: Warning appears in product widget sidebar #705
+* Bug: Function wp_specialchars is deprecated since version 2.8.0! #709
+* Bug: Add compatibility with pressbook theme #710
 
-= 2.0.16 02/01/2021 =
-* TWEAK: Remove special characters such as fancy quotes, en and, em dashes when generating in-page anchor IDs.
+= 2.0.62 12/01/2024 =
+* New: Shortcode for sidebar sticky toc widget in documentation shortcode block #399
+* New: A feature to remove numbers from individual post #404
+* New: An option to customize the Highlighting of the headings #455 (Pro)
+* New: An option to customize the Font Weight #496
+* New: An option for TOC in Widgets to change the colour and font size of the TOC title #508
+* New: Elementor Code Improvement #675
+* New: Compatibility for Genesis Theme Custom Taxonomy Archive page (Pro)
+* Bug: Ad Inserter #97
+* Bug: Add Request URL option conflicting with twenty-twenty two theme #676
+* Bug: Conflict with Avada child theme #677
+* Bug: Conflict issue with device target feature #678
+* Bug: YASR schema markup got disappeared when enabling plugin #679
+* Bug: Add compatibility with Current Year, Symbols and IP Shortcode plugin #681
 
-= 2.0.15 01/27/2021 =
-* TWEAK: Remove additional reserved characters when generating in-page anchor IDs.
+= 2.0.61 13/12/2023 =
+* New: checkbox selection should work on label clicks #473
+* New: Should be able to change the sticky toggle header label for each post individually #625
+* New: TOC plugin is not working with AJAX #634
+* New: Need to add a feature to customize the View More/Less label #637
+* New: To make the Sticky Toggle heading highlight while scrolling through the content #647
+* New: The option font size is only working for the Sticky Toggle title Label but not for the headings #661
+* New: Meta field to turn off sticky individually on post/pages. #666
+* Bug: Put documents links #510
+* Bug: Recent TOC Update 2.0.56.1 Causing W3C Validation Error #611
+* Bug: The size of headings not increasing individually as per setting. #623
+* Bug: Checklist #658
+* Bug: The option "Width" is not getting saved for the option Sticky Toggle. #660
+* Bug: The feature "Fixed TOC" is not working #662
+* Bug: The H4, H5, and H6 headings are not changing the font size if customized in the Settings #663
+* Bug: Target device functionality is not working in sticky toc #664
+* Bug: PHP Warning in TOC Plugin: Undefined Array Key 'desc' in class.options.php (Line 1776) #665
+* Bug: Sticky TOC on Password-Protected Pages Before Entry #667
 
-= 2.0.14 01/26/2021 =
-* TWEAK: Refactor debug log as a Singleton.
-* TWEAK: Add additional logging to aid in debugging.
-* BUG: Correct logic for PHP where empty string no longer evaluates as integer `0`.
+= 2.0.60 05/12/2023 =
+* New: Alignment of TOC to the center on selected posts/pages #314
+* New: An option to show the TOC content after the first image #336
+* New: An option where users can show or hide the TOC on mobile devices and desktops. #362
+* New: A feature to change a header label for specific post or page. #472
+* New: An option to exclude/include heading via shortcode #566
+* New: An option to load js in footer or header #586
+* New: Add shortcode attribute to Hide/show counters in toc #649
+* Bug: A sticky toggle appears on the Author pages and it contains the headings of the latest post published by them. #640
+* Bug: Heading are not working if the plugin Molongui Authorship is activated ad if the heading contains "..." in it #642
 
-= 2.0.13 01/25/2021 =
-* TWEAK: Restrict debug logging to when `WP_DEBUG` is enabled *and* current user capability of `manage_options`.
-* TWEAK: Add logging to aid in support.
-* DEV: phpDoc update.
+= 2.0.59 29/11/2023 =
+* New: An option to show TOC on Tag #489
+* New: Toc support for custom taxonomy description #512
+* New: Apply default anchor prefix in the Japanese language #528
+* New: An option to restrict the toc if any part of url match with saved limit path #560
+* New: An option to use the TOC without anchor links in the URL. #587
+* New: An option which Preserve Line Breaks in TOC. #591
+* New: Collapsable sub heading #622
+* New: Enable support attributes inside shortcode #624
+* New: Filter to hide and show metabox #645
+* Bug: The WP Bakery image gallery is getting braked on first reload #627
+* Bug: Warning in debug log #636
+* Bug: When we set the counter as a disc while using the viewMore option, then TOC CSS is not working fine. #638
+* Bug: Fix CSS Style Placement for Easy-Table-of-Contents WordPress Plugin #639
+* Bug: Fatal error while activating pro version #644
+* Bug: Conflict issue with the Smooth Scroll Offset option #646
+* Bug: Critical Error with READ TIME Option when Set to "0"(Zero) #648
 
-= 2.0.12 01/22/2021 =
-* TWEAK: Allow `_` and `-` in anchors.
-* TWEAK: Minor CSS tweaks that prevent theme from breaking the layout.
-* TWEAK: Minor tweak to class initialization.
-* TWEAK: Do not display the view toggle if JavaScript is broken on the site.
-* TWEAK: Add the ability to enable displaying of displaying debug information on the page.
-* BUG: Check for array and keys before accessing values.
-* BUG: Check for array key be fore access.
-* BUG: Remove reserved characters when generating in-page anchor IDs.
-* DEV: Remove unnecessary vendor library files.
-* DEV: Deal with phpStorm showing a warning about path not found when including files.
+= 2.0.58 15/11/2023 =
+* New: Generate schema/SiteNavigationElement for Table of contents #592
+* New: An option to show estimated time to read the full article #594
+* New: An option of TOC not crawl the paragraphs in blockquotes #601
+* New: Add the View More feature compatibility with the Shortcode #628
+* Bug: Widget Auto-Highlight Issue After Update 2.0.56.1 #610
+* Bug: Conflict with the plugin Perfmatters's option "Enable FastClick" #612
+* Bug: Add compatibility with the theme Oliver Lohse #615
+* Bug: Sticky TOC is showing on Blog pages #617
+* Bug: Toc not showing if AMP Page Builder is used #619
+* Bug: Smooth Scroll offset issue after latest update #620
+* Bug: JSON error when we try to added the ETOC in page/post section #621
+* Bug: The WP Bakery image gallery is getting braked on first reload #627
+* Bug: Issue showing on the page speed tool as Lists do not contain only <li> elements and script-supporting elements #630
 
-= 2.0.11 05/01/2020 =
-* COMPATIBILITY: Add support for the Uncode theme.
-* COMPATIBILITY: Do not run on WooCommerce pages.
-* DEV: Correct typo in phpDoc.
+= 2.0.57.1 27/10/2023 =
+* Bug: Incomplete CSS Classes in Version 2.0.57 Causing Style Issues #614
 
-= 2.0.10 04/20/2020 =
-* TWEAK: Add trailing `span` to heading, to prepare for `#` option and to fix duplicate heading title matching.
-* TWEAK: Add second heading search/replace function to search for heading in content with heading html entities decoded. May help Beaver Builder users as it seems like it does not encode HTML entities as WP core does.
+= 2.0.57 25/10/2023 =
+* New: A feature to show only limited number of headings and rest should be as "View More" #474
+* Bug: The Footnotes are being repeated if the plugin is activated #597
+* Bug: A warning is showing while using the TOC #606
+* Bug: Jump anchors with apostrophe headings not working if theme Bamboo by Mediavine is active #607
+* Bug: Conflict issue with Molongui Authorship plugin in 2.0.56 version #608
+* Bug: Widget Auto-Highlight Issue After Update 2.0.56.1 #610
 
+= 2.0.56.1 09/10/2023 =
+* Bug: Toggle is not working with the pure CSS loading method. #604
+* Bug: Border colour is not changing in TOC #603
+* Bug: jQuery issue showing in console #605
 
-= 2.0.9 04/08/2020 =
-* TWEAK: AMP/Caching plugins seems to break anchors with colons and periods even though they are valid characters for the id attribute in HTML5.
-* TWEAK: Replace multiple underscores with a single underscore.
-* DEV: Update the UWS library which fixes the deprecation notice for PHP 7.4.
-* DEV: Add phpcs.xml.dist.
-* DEV: Strict type checks.
-* DEV: Inline doc updates.
+= 2.0.56 05/10/2023 =
+* New: Option to exclude toc from wp-json rest api #580
+* New: Feature to customize the CSS of the TOC container #553
+* New: Compatibility with the plugin CM Tooltip Glossary Ecommerce #556
+* New: Compatibility with the plugin Molongui Authorship #563
+* New: Option to include Page title in Table Of Content #568
+* New: Feature to customize the Background color of the Header Label #569
+* New: Added shortcode [no_ez_toc] so that users can disable the auto insertion of the TOC on a specific post/page #581
+* New: Compatibility with the ACF Flexible Content Module #589
+* New: Compatibility with salesdorado-tailpress theme #590
+* New: Compatibility of javascript scroll with Walker News Template theme #593
+* New: Options to customise the sticky TOC toggle. #583 #286
+* Bug: Unwanted spacing added in post while using TOC with uncode theme #588
+* Bug: Links are not working if the placement option "After Paragraph Number" is selected #598
+* Bug: TOC shortcode is added to the single.php file, it does not work. #599
 
-= 2.0.8 04/03/2020 =
-* TWEAK: Convert `<br />` tags in headings to a space.
-* TWEAK: Add additional widget classes.
-* TWEAK: Improve the sanitization of the excluded headings field post setting.
-* TWEAK: Minor optimization of creating the matching pattern for excluding headings for improved performance.
-* COMPATIBILITY: Exclude Create by Mediavine from heading eligibility.
-* BUG: Ensure excluded headings are removed from the headings array.
-* BUG: Ensure empty headings are removed from the headings array.
-
-= 2.0.7 04/02/2020 =
-* NEW: Exclude any HTML nodes with the class of `.ez-toc-exclude-headings`.
-* TWEAK: Change smooth scroll selector from `'body a'` to `'a.ez-toc-link'`.
-* TWEAK: Declare JS variables.
-* TWEAK: Support unicode characters for the `id` attribute. Permitted by HTML5.
-* TWEAK: Move the in-page anchor/span to before the heading text to account for long headings where it line wraps.
-* TWEAK: Slight rework to ezTOC widget container classes logic.
-* TWEAK: Cache bust the JS to make dev easier.
-* TWEAK: JavaScript cleanup.
-* TWEAK: URI Encode the id attribute to deal with reserved characters in JavaScript. Technically not necessary for the id attribute but needed to work with the jQuery smoothScroll library.
-* COMPATIBILITY: Reintroduce filter to exclude Ultimate Addons for VC Composer Tabs from heading eligibility.
-* BUG: Correct array iteration logic when processing headings.
-* BUG: Tighten matching for headings in excluded HTML nodes. The loose matching was excluding far too many headings.
-* BUG: Use `esc_attr()` instead of `esc_url()` for the anchor href because valid id attribute characters would cause it to return an empty href which cause a nonworking link.
-
-= 2.0.6 03/30/2020 =
-* BUG: Ensure minified files are current.
-
-= 2.0.5 03/27/2020 =
-* BUG: Prevent possible "strpos(): Empty needle in" warnings when excluding nodes from TOC eligibility.
-
-= 2.0.4 03/16/2020 =
-* NEW: Introduce the `ez_toc_container_class` filter.
-* TWEAK: Slight rework to ezTOC container classes logic.
-* BUG: `sprintf()` was eating `%` in the TOC heading item.
-* BUG: Do not insert TOC at top of post if before first heading option is selected even if first heading can not be found. Some page builders cause the TOC to insert twice or on blog pages.
-
-= 2.0.3 03/12/2020 =
-* TWEAK: Slightly tighten heading matching, last update made it a little too loose.
-* BUG: Correct logic required to place TOC before first heading which is required for the more lax heading matching required for page builders.
-
-= 2.0.2 03/12/2020 =
-* COMPATIBILITY: Remove filter to exclude Ultimate Addons for VC Composer Tabs from heading eligibility.
-* COMPATIBILITY: Add additional filters to improve Elementor compatibility.
-* TWEAK: Loosen heading matching when doing find/replace to insert in page links. Excluding the opening heading tag to allow matching heading where page builders dynamically add classes and id which break heading matching during find/replace.
-
-= 2.0.1 03/09/2020 =
-* COMPATIBILITY: Exclude the WordPress Related Posts plugin nodes.
-* COMPATIBILITY: Exclude a couple Atomic Block plugin nodes.
-* COMPATIBILITY: Exclude JetPack Related Posts from heading eligibility.
-* COMPATIBILITY: Exclude Ultimate Addons for VC Composer Tabs from heading eligibility.
-* COMPATIBILITY: Exclude WP Product Reviews from heading eligibility.
-* TWEAK: Prevent possible "strpos(): Empty needle in" warnings when excluding nodes from TOC eligibility.
-
-= 2.0 02/01/2020 =
-* NEW: Major rewrite of all code and processing logic to make it faster and more reliable.
-* NEW: Support for the <!--nextpage--> tag.
-* NEW: Introduce helper functions for devs.
-* NEW: Support WPML.
-* NEW: Support Polylang.
-* NEW: Add filter to support the Rank Math plugin.
-* NEW: Introduce the `ez_toc_maybe_apply_the_content_filter` filter.
-* TWEAK: Improve translation compatibility.
-* TWEAK: Rework widget logic to allow multi-line TOC items, improve active item highlighting while removing the use of the jQuery Waypoints library.
-* TWEAK Add additional classes to TOC list items.
-* TWEAK: Add WOFF2 format for icon format and change font references in CSS.
-* TWEAK: Add font-display: swap for toggle icon.
-* TWEAK: Update JS Cookie to 2.2.1.
-* TWEAK: Update jQuery Smooth Scroll to 2.2.0.
-* TWEAK: Allow forward slash and angle brackets in headings and alternate headings.
-* TWEAK: Allow forward slash in  excluded headings.
-* TWEAK: Remove new line/returns when matching excluded headings.
-* TWEAK: Simple transient cache to ensure a post is only processed once per request for a TOC.
-* TWEAK: Improve sanitization of alternate headings field value.
-* TWEAK: Deal with non-breaking-spaces in alternate headings.
-* TWEAK: Add the ability to exclude by selector content eligible to be included in the TOC.
-* TWEAK: Change the shortcode priority to a higher value.
-* TWEAK: Add filter to remove shortcodes from the content prior to the `the_content` filter being run to exclude shortcode content from being eligible as TOC items.
-* TWEAK: Add compatibility filters to remove shortcodes for Connections and Striking theme to remove them from eligible TOC item content.
-* TWEAK: Do not execute if root current filter is the `wp_head` or `get_the_excerpt` filters.
-* TWEAK: Add filter to exclude content by selector.
-* TWEAK: Move in-page anchor to after the heading instead of wrapping the heading to prevent conflicts with theme styling.
-* TWEAK: Utilize the `ez_toc_exclude_by_selector` filter the exclude the JetPack share buttons from eligible headings.
-* TWEAK: Remove the Elegant Themes Bloom plugin node from the post content before extracting headings.
-* TWEAK: Add compatibility filter for the Visual Composer plugin.
-* TWEAK: Utilize the `ez_toc_exclude_by_selector` filter the exclude the Starbox author heading from eligible headings.
-* I18N: Add wpml-config.xml file.
-* BUG: Correct option misspelling.
-* BUG: Do not need to run values for alternate and exclude headings thru `wp_unslash()` because `update_post_meta()` already does.
-* BUG: Do not need to run `stripslashes()` when escaping the alternate heading value.
-* BUG: Sanitize the excluded heading string before saving post meta.
-* DEV: Change PHP keywords to comply with PSR2.
-* DEV:Bump minimum PHP version to 5.6.20 which matches WP core.
-
-= 1.7 05/09/2018 =
-* NEW: Introduce the `ez_toc_shortcode` filter.
-* TWEAK: Fix notices due to late eligibility check. props unixtam
-* TWEAK: Tweak eligibility check to support the TOC widget.
-* TWEAK: Prefix a few CSS classes in order to prevent collisions with theme's and other plugins.
-* TWEAK: Avoid potential PHP notice in admin when saving the post by checking for nonce before validating it.
-* TWEAK: Using the shortcode now overrides global options.
-* TWEAK: `the_content()` now caches result of `is_eligible()`.
-* TWEAK: Refactor to pass the WP_Post object internally vs. accessing it via the `$wp_query->post` which may not in all cases exist.
-* TWEAK: Use `pre_replace()` to replace one or more spaces with an underscore.
-* TWEAK: Return original title in the `ez_toc_url_anchor_target` filter.
-* TWEAK: Strip `&nbsp;`, replacing it with a space character.
-* TWEAK: Minor tweaks to the in page URL creating.
-* TWEAK: Wrap TOC list in a nav element.
-* TWEAK: Init plugin on the `plugins_loaded` hook.
-* TWEAK: Tweak the minimum number of headers to 1.
-* BUG: The header options from the post meta should be used when building the TOC hierarchy, not the header options from the global settings.
-* BUG: Do not double escape field values.
-* BUG: Ensure Apostrophe / Single quote use in Exclude Headings work.
-* OTHER: Update CSS to include the newly prefixed classes.
-* DEV: Remove some commented out unused code.
-
-= 1.6.1 03/16/2018 =
-* TWEAK: Revert change made to allow HTML added via the `ez_toc_title` filter as it caused undesirable side effects.
-* BUG: Ensure Smooth Scroll Offset is parsed as an integer.
-
-= 1.6 03/15/2018 =
-* NEW: Add `px` option for font size unit.
-* NEW: Add title font size and weight settings options.
-* NEW: Add the Mobile Smooth Scroll Offset option.
-* TWEAK: Change default for font size unit from `px` to `%` to match the default options values.
-* TWEAK: Correct CSS selector so margin is properly applied between the title and TOC items.
-* TWEAK: Honor HTML added via `ez_toc_title` filter.
-* TWEAK: Ensure the ezTOC content filter is not applied when running `the_content` filter.
-* TWEAK: Only enqueue the javascript if the page is eligible for a TOC.
-* TWEAK: Update icomoon CSS to remove unecessary CSS selectors to prevent possible conflicts.
-* TWEAK: The smooth scroll offset needs to be taken into account when defining the offset_top property when affixing the widget.
-* OTHER: Update frontend minified CSS file.
-* OTHER: Update the frontend minified javascript file.
-* DEV: phpDoc corrections.
-
-= 1.5 02/20/2018 =
-* BUG: Correct CSS selector to properly target the link color.
-* OTHER: Update the WayPoints library.
-* DEV: Add a couple @todo's.
-
-= 1.4 01/29/2018 =
-* TWEAK: Change text domain from ez_toc to easy-table-of-contents.
-* TWEAK: Rename translation files with correct text domain.
-* BUG: Ensure page headers are processed to add the in page header link when using the shortcodes.
-* BUG: Add forward slash to domain path in the plugin header.
-* I18N: Update POT file.
-* I18N: Update Dutch (nl_NL) translation.
-
-= 1.3 12/18/2017 =
-* FEATURE: Add support for the `[ez-toc]` shortcode.
-* NEW: For backwards compatibility with "Table of Content Plus", register the `[toc]` shortcode.
-* NEW: Introduce the `ez_toc_extract_headings_content` filter.
-* TWEAK: Update the tested to and required readme header text.
-* TWEAK: Do not show the widget on the 404, archive, search and posts pages.
-* I18N: Add the nl_NL translation.
-
-= 1.2 04/29/2016 =
-* TWEAK: Remove the font family from styling the TOC title header.
-* TWEAK: Pass the raw title to the `ez_toc_title` filter.
-* BUG: A jQuery 1.12 fix for WordPress 4.5.
-
-= 1.1 02/24/2016 =
-* FEATURE: Add option to replace header wither alternate header text in the table of content.
-* NEW: Introduce the ez_toc_filter.
-* NEW: Introduce ezTOC_Option::textarea() to render textareas.
-* NEW: Introduce array_search_deep() to recursively search an array for a value.
-* TWEAK: Run table of contents headers thru wp_kses_post().
-* TWEAK: Escape URL.
-* TWEAK: Count excluded headings only once instead of multiple times.
-* TWEAK: Escape translated string before rendering.
-* TWEAK: Use wp_unslash() instead of stripslashes().
-* TWEAK: Escape translated string.
-* BUG: Fix restrict path logic.
-* OTHER: Readme tweaks.
-* I18N: Add POT file.
-* I18N: Add Dutch translation.
-* DEV: Update .gitignore to allow PO files.
-* DEV: phpDoc fix.
-
-= 1.0 09/08/2015 =
-* Initial release.
-  - Complete refactor and restructure of the original code for better design and separation of function to make code base much easier to maintain and extend.
-  - Update all third party libraries.
-  - Make much better use of the WordPress Settings API.
-  - Minified CSS and JS files are used by default. Using SCRIPT_DEBUG will use the un-minified versions.
-  - Add substantial amounts of phpDoc for developers.
-  - Add many hooks to permit third party integrations.
-  - Widget can be affixed/stuck to the page so it is always visible.
-  - Widget will highlight the table of content sections that are currently visible in the browser viewport.
-  - Widget will now generate table of contents using output from third party shortcodes.
-  - Use wpColorPicker instead of farbtastic.
-  - Remove all shortcodes.
-  - Per post options are saved in post meta instead of set by shortcode.
+Full changelog available at [changelog.txt](https://plugins.svn.wordpress.org/easy-table-of-contents/trunk/changelog.txt)
 
 == Frequently Asked Questions ==
 
@@ -388,6 +308,14 @@ You are not limited to a single a single nested item either. You can add as many
 <h1>Item 6</h1>`
 
 You can nest up 6 levels deep if needed. I hope this helps you understand how to create and build your own auto generated table of contents on your sites!
+
+= Is there any shortcode to add the table of content to anywhere I want ? =
+
+Yes you can add the TOC with this shortcode - [ez-toc] and with the help of this you can easily add the TOC in the content or anywhere in the WordPress and if you want to add the shortcode on the theme file then you can add it with the help of this code - <?php echo do_shortcode( â€˜[ez-toc]â€™ ); ?> and with this, you can add the TOC on any file according to your need.
+
+== Contact | Help | Technical Support ==
+
+[Contact Us](https://tocwp.com/contact/)
 
 == Upgrade Notice ==
 

@@ -28,14 +28,14 @@ get_template_part('slider');
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
-					<h2 class="section-title">Về<span>RULA</span></h2>
-					<p>RULA Architects là chuyên gia thiết kế & thi công các công trình kiến trúc nội thất hiện đại. Tại RULA, chúng tôi trau chuốt từ khâu lên ý tưởng, phát triển concept đến ứng dụng thực tế. Tất cả dự án của RULA là sự kết hợp chặt chẽ giữa thẩm mỹ kiến trúc với công năng sử dụng.<br/>
+					<h2 class="section-title"><span>DANH GIA VỌNG TỘC</span></h2>
+					<p>Danh gia vong toc la abc xyz.<br/>
 			</p>
 				</div>
 				<div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
 					<div class="about-img">
-						<div class="img"> <img src="/wp-content/uploads/2021/06/AY8A3731_4.jpg" class="img-fluid" alt=""> </div>
-						<div class="about-img-2 about-buro">RULA Team</div>
+						<div class="img"> <img src="https://danhgiavongtoc.vn/wp-content/uploads/2024/03/Hung-Thinh-1.jpg" class="img-fluid" alt=""> </div>
+						<div class="about-img-2 about-buro">Danh gia vọng tộc</div>
 					</div>
 				</div>
 			</div>

@@ -1,13 +1,12 @@
-
 	<section class="testimonials">
-		<div class="background bg-img bg-fixed section-padding pb-0" data-background="/wp-content/uploads/2021/06/IQ3A4750-HDR-scaled.jpg" data-overlay-dark="3">
+		<div class="background bg-img bg-fixed section-padding pb-0" data-background="https://danhgiavongtoc.vn/wp-content/uploads/2024/03/Hung-Thinh-1.jpg" data-overlay-dark="3">
 			<div class="container">
 				<div class="row">
 					<!-- Promo video -->
 					<div class="col-md-6">
 						<div class="vid-area">
 							<div class="vid-icon">
-								<a class="play-button vid" href="https://www.youtube.com/watch?v=yBPcREHyNmk">
+								<a class="play-button vid" href="https://www.youtube.com/watch?v=HBrT7rPoIsc">
 									<svg class="circle-fill">
 										<circle cx="43" cy="43" r="39" stroke="#fff" stroke-width=".5"></circle>
 									</svg>

@@ -102,7 +102,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				'url' => '/',
 			],
 			[
-				'title' => 'Về RULA',
+				'title' => 'Giới thiệu',
 				'url' => '/ve-rula',
 			],
 			[
