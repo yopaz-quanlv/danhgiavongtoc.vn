@@ -53,6 +53,14 @@ class WC_Order_Item extends WC_Data implements ArrayAccess {
 	protected $object_type = 'order_item';
 
 	/**
+	 * Legacy package key.
+	 *
+	 * @deprecated 4.4.0 For legacy actions.
+	 * @var string
+	 */
+	public $legacy_package_key;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param int|object|array $item ID to load from the DB, or WC_Order_Item object.
@@ -248,6 +256,17 @@ class WC_Order_Item extends WC_Data implements ArrayAccess {
 	*/
 
 	/**
+	 * Wrapper for get_formatted_meta_data that includes all metadata by default. See https://github.com/woocommerce/woocommerce/pull/30948
+	 *
+	 * @param string $hideprefix  Meta data prefix, (default: _).
+	 * @param bool   $include_all Include all meta data, this stop skip items with values already in the product name.
+	 * @return array
+	 */
+	public function get_all_formatted_meta_data( $hideprefix = '_', $include_all = true ) {
+		return $this->get_formatted_meta_data( $hideprefix, $include_all );
+	}
+
+	/**
 	 * Expands things like term slugs before return.
 	 *
 	 * @param string $hideprefix  Meta data prefix, (default: _).
@@ -310,6 +329,7 @@ class WC_Order_Item extends WC_Data implements ArrayAccess {
 	 * @param string $offset Offset.
 	 * @param mixed  $value  Value.
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetSet( $offset, $value ) {
 		if ( 'item_meta_array' === $offset ) {
 			foreach ( $value as $meta_id => $meta ) {
@@ -334,6 +354,7 @@ class WC_Order_Item extends WC_Data implements ArrayAccess {
 	 *
 	 * @param string $offset Offset.
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetUnset( $offset ) {
 		$this->maybe_read_meta_data();
 
@@ -359,6 +380,7 @@ class WC_Order_Item extends WC_Data implements ArrayAccess {
 	 * @param string $offset Offset.
 	 * @return bool
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetExists( $offset ) {
 		$this->maybe_read_meta_data();
 		if ( 'item_meta_array' === $offset || 'item_meta' === $offset || array_key_exists( $offset, $this->data ) ) {
@@ -373,6 +395,7 @@ class WC_Order_Item extends WC_Data implements ArrayAccess {
 	 * @param string $offset Offset.
 	 * @return mixed
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetGet( $offset ) {
 		$this->maybe_read_meta_data();
 

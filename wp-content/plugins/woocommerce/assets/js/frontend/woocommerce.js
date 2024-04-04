@@ -14,7 +14,7 @@ jQuery( function( $ ) {
 		}
 	});
 
-	var noticeID   = $( '.woocommerce-store-notice' ).data( 'notice-id' ) || '',
+	var noticeID   = $( '.woocommerce-store-notice' ).data( 'noticeId' ) || '',
 		cookieName = 'store_notice' + noticeID;
 
 	// Check the value of that cookie and show/hide the notice accordingly
@@ -79,7 +79,7 @@ jQuery( function( $ ) {
 		}
 	};
 
-	// Show password visiblity hover icon on woocommerce forms
+	// Show password visibility hover icon on woocommerce forms
 	$( '.woocommerce form .woocommerce-Input[type="password"]' ).wrap( '<span class="password-input"></span>' );
 	// Add 'password-input' class to the password wrapper in checkout page.
 	$( '.woocommerce form input' ).filter(':password').parent('span').addClass('password-input');
@@ -87,7 +87,11 @@ jQuery( function( $ ) {
 
 	$( '.show-password-input' ).on( 'click',
 		function() {
-			$( this ).toggleClass( 'display-password' );
+			if ( $( this ).hasClass( 'display-password' ) ) {
+				$( this ).removeClass( 'display-password' );
+			} else {
+				$( this ).addClass( 'display-password' );
+			}
 			if ( $( this ).hasClass( 'display-password' ) ) {
 				$( this ).siblings( ['input[type="password"]'] ).prop( 'type', 'text' );
 			} else {

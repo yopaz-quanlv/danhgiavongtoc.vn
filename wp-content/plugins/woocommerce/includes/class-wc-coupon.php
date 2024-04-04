@@ -9,6 +9,7 @@
  */
 
 use Automattic\WooCommerce\Utilities\NumberUtil;
+use Automattic\WooCommerce\Utilities\StringUtil;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -28,6 +29,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	protected $data = array(
 		'code'                        => '',
 		'amount'                      => 0,
+		'status'                      => null,
 		'date_created'                => null,
 		'date_modified'               => null,
 		'date_expires'                => null,
@@ -80,6 +82,15 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	protected $cache_group = 'coupons';
 
 	/**
+	 * Sorting.
+	 *
+	 * Used by `get_coupons_from_cart` to sort coupons.
+	 *
+	 * @var int
+	 */
+	public $sort = 0;
+
+	/**
 	 * Coupon constructor. Loads coupon data.
 	 *
 	 * @param mixed $data Coupon data, object, ID or code.
@@ -105,7 +116,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 		// Try to load coupon using ID or code.
 		if ( is_int( $data ) && 'shop_coupon' === get_post_type( $data ) ) {
 			$this->set_id( $data );
-		} elseif ( ! empty( $data ) ) {
+		} elseif ( is_string( $data ) && ! StringUtil::is_null_or_whitespace( $data ) ) {
 			$id = wc_get_coupon_id_by_code( $data );
 			// Need to support numeric strings for backwards compatibility.
 			if ( ! $id && 'shop_coupon' === get_post_type( $data ) ) {
@@ -136,7 +147,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	/**
 	 * Checks the coupon type.
 	 *
-	 * @param  string $type Array or string of types.
+	 * @param  string|array $type Array or string of types.
 	 * @return bool
 	 */
 	public function is_type( $type ) {
@@ -185,6 +196,17 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	}
 
 	/**
+	 * Get coupon status.
+	 *
+	 * @since  6.2.0
+	 * @param  string $context What the value is for. Valid values are 'view' and 'edit'.
+	 * @return string
+	 */
+	public function get_status( $context = 'view' ) {
+		return $this->get_prop( 'status', $context );
+	}
+
+	/**
 	 * Get discount type.
 	 *
 	 * @since  3.0.0
@@ -200,7 +222,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	 *
 	 * @since  3.0.0
 	 * @param  string $context What the value is for. Valid values are 'view' and 'edit'.
-	 * @return float
+	 * @return string
 	 */
 	public function get_amount( $context = 'view' ) {
 		return wc_format_decimal( $this->get_prop( 'amount', $context ) );
@@ -251,7 +273,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	}
 
 	/**
-	 * Get the "indvidual use" checkbox status.
+	 * Get the "individual use" checkbox status.
 	 *
 	 * @since  3.0.0
 	 * @param  string $context What the value is for. Valid values are 'view' and 'edit'.
@@ -492,6 +514,16 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	}
 
 	/**
+	 * Set coupon status.
+	 *
+	 * @since 3.0.0
+	 * @param string $status Status.
+	 */
+	public function set_status( $status ) {
+		$this->set_prop( 'status', $status );
+	}
+
+	/**
 	 * Set discount type.
 	 *
 	 * @since 3.0.0
@@ -675,7 +707,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	 * Set the minimum spend amount.
 	 *
 	 * @since 3.0.0
-	 * @param float $amount Minium amount.
+	 * @param float $amount Minimum amount.
 	 */
 	public function set_minimum_amount( $amount ) {
 		$this->set_prop( 'minimum_amount', wc_format_decimal( $amount ) );
@@ -999,7 +1031,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 			case self::E_WC_COUPON_USAGE_LIMIT_COUPON_STUCK:
 				if ( is_user_logged_in() && wc_get_page_id( 'myaccount' ) > 0 ) {
 					/* translators: %s: myaccount page link. */
-					$err = sprintf( __( 'Coupon usage limit has been reached. If you were using this coupon just now but order was not complete, you can retry or cancel the order by going to the <a href="%s">my account page</a>.', 'woocommerce' ), wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) );
+					$err = sprintf( __( 'Coupon usage limit has been reached. If you were using this coupon just now but your order was not complete, you can retry or cancel the order by going to the <a href="%s">my account page</a>.', 'woocommerce' ), wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) );
 				} else {
 					$err = $this->get_coupon_error( self::E_WC_COUPON_USAGE_LIMIT_REACHED );
 				}
@@ -1073,5 +1105,51 @@ class WC_Coupon extends WC_Legacy_Coupon {
 		}
 		// When using this static method, there is no $this to pass to filter.
 		return apply_filters( 'woocommerce_coupon_error', $err, $err_code, null );
+	}
+
+	/**
+	 * Get the coupon information that is needed to reapply the coupon to an existing order.
+	 * This information is intended to be stored as a meta value in the order line item corresponding to the coupon
+	 * and should NOT be modified or extended (additional/custom data should go in a separate metadata entry).
+	 *
+	 * The information returned is a JSON-encoded string of an array with the following coupon information:
+	 *
+	 * 0: Id
+	 * 1: Code
+	 * 2: Type, null is equivalent to 'fixed_cart'
+	 * 3: Nominal amount (either a fixed amount or a percent, depending on the coupon type)
+	 * 4: The coupon grants free shipping? (present only if true)
+	 *
+	 * @return string A JSON string with information that allows the coupon to be reapplied to an existing order.
+	 */
+	public function get_short_info(): string {
+		$type = $this->get_discount_type();
+		$info = array(
+			$this->get_id(),
+			$this->get_code(),
+			'fixed_cart' === $type ? null : $type,
+			(float) $this->get_prop( 'amount' ),
+		);
+
+		if ( $this->get_free_shipping() ) {
+			$info[] = true;
+		}
+
+		return wp_json_encode( $info );
+	}
+
+	/**
+	 * Sets the coupon parameters from a reapply information set generated with 'get_short_info'.
+	 *
+	 * @param string $info JSON string with reapply information as returned by 'get_short_info'.
+	 */
+	public function set_short_info( string $info ) {
+		$info = json_decode( $info, true );
+
+		$this->set_id( $info[0] ?? 0 );
+		$this->set_code( $info[1] ?? '' );
+		$this->set_discount_type( $info[2] ?? 'fixed_cart' );
+		$this->set_amount( $info[3] ?? 0 );
+		$this->set_free_shipping( $info[4] ?? false );
 	}
 }

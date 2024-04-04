@@ -1,5 +1,5 @@
 /* global wp, pwsL10n, wc_password_strength_meter_params */
-( function( $ ) {
+jQuery( function( $ ) {
     'use strict';
 	/**
 	 * Password Strength Meter class.
@@ -48,7 +48,7 @@
 			) {
 				submit.attr( 'disabled', 'disabled' ).addClass( 'disabled' );
 			} else {
-				submit.removeAttr( 'disabled', 'disabled' ).removeClass( 'disabled' );
+				submit.prop( 'disabled', false ).removeClass( 'disabled' );
 			}
 		},
 
@@ -84,7 +84,7 @@
 			var meter     = wrapper.find( '.woocommerce-password-strength' ),
 				hint      = wrapper.find( '.woocommerce-password-hint' ),
 				hint_html = '<small class="woocommerce-password-hint">' + wc_password_strength_meter_params.i18n_password_hint + '</small>',
-				strength  = wp.passwordStrength.meter( field.val(), wp.passwordStrength.userInputBlacklist() ),
+				strength  = wp.passwordStrength.meter( field.val(), wp.passwordStrength.userInputDisallowedList() ),
 				error     = '';
 
 			// Reset.
@@ -129,4 +129,4 @@
 	};
 
 	wc_password_strength_meter.init();
-})( jQuery );
+} );

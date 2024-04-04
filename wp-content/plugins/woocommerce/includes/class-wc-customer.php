@@ -52,6 +52,7 @@ class WC_Customer extends WC_Legacy_Customer {
 			'postcode'   => '',
 			'country'    => '',
 			'state'      => '',
+			'phone'      => '',
 		),
 		'is_paying_customer' => false,
 	);
@@ -76,6 +77,14 @@ class WC_Customer extends WC_Legacy_Customer {
 	 * @var string
 	 */
 	protected $calculated_shipping = false;
+
+	/**
+	 * This is the name of this object type.
+	 *
+	 * @since 5.6.0
+	 * @var string
+	 */
+	protected $object_type = 'customer';
 
 	/**
 	 * Load customer data based on how WC_Customer is called.
@@ -115,16 +124,6 @@ class WC_Customer extends WC_Legacy_Customer {
 			$this->data_store = WC_Data_Store::load( 'customer-session' );
 			$this->data_store->read( $this );
 		}
-	}
-
-	/**
-	 * Prefix for action and filter hooks on data.
-	 *
-	 * @since  3.0.0
-	 * @return string
-	 */
-	protected function get_hook_prefix() {
-		return 'woocommerce_customer_get_';
 	}
 
 	/**
@@ -208,7 +207,17 @@ class WC_Customer extends WC_Legacy_Customer {
 			$city     = $this->get_shipping_city();
 		}
 
-		return apply_filters( 'woocommerce_customer_taxable_address', array( $country, $state, $postcode, $city ) );
+		/**
+		 * Filters the taxable address for a given customer.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param array  $taxable_address An array of country, state, postcode, and city for the customer's taxable address.
+		 * @param object $customer        The customer object for which the taxable address is being requested.
+		 *
+		 * @return array The filtered taxable address for the customer.
+		 */
+		return apply_filters( 'woocommerce_customer_taxable_address', array( $country, $state, $postcode, $city ), $this );
 	}
 
 	/**
@@ -445,18 +454,27 @@ class WC_Customer extends WC_Legacy_Customer {
 	 *
 	 * @since  3.0.0
 	 * @param  string $prop Name of prop to get.
-	 * @param  string $address billing or shipping.
-	 * @param  string $context What the value is for. Valid values are 'view' and 'edit'. What the value is for. Valid values are view and edit.
+	 * @param  string $address_type Type of address; 'billing' or 'shipping'.
+	 * @param  string $context What the value is for. Valid values are 'view' and 'edit'.
 	 * @return mixed
 	 */
-	protected function get_address_prop( $prop, $address = 'billing', $context = 'view' ) {
+	protected function get_address_prop( $prop, $address_type = 'billing', $context = 'view' ) {
 		$value = null;
 
-		if ( array_key_exists( $prop, $this->data[ $address ] ) ) {
-			$value = isset( $this->changes[ $address ][ $prop ] ) ? $this->changes[ $address ][ $prop ] : $this->data[ $address ][ $prop ];
+		if ( array_key_exists( $prop, $this->data[ $address_type ] ) ) {
+			$value = isset( $this->changes[ $address_type ][ $prop ] ) ? $this->changes[ $address_type ][ $prop ] : $this->data[ $address_type ][ $prop ];
 
 			if ( 'view' === $context ) {
-				$value = apply_filters( $this->get_hook_prefix() . $address . '_' . $prop, $value, $this );
+				/**
+				 * Filter: 'woocommerce_customer_get_[billing|shipping]_[prop]'
+				 *
+				 * Allow developers to change the returned value for any customer address property.
+				 *
+				 * @since 3.6.0
+				 * @param string      $value    The address property value.
+				 * @param WC_Customer $customer The customer object being read.
+				 */
+				$value = apply_filters( $this->get_hook_prefix() . $address_type . '_' . $prop, $value, $this );
 			}
 		}
 		return $value;
@@ -729,6 +747,17 @@ class WC_Customer extends WC_Legacy_Customer {
 	}
 
 	/**
+	 * Get shipping phone.
+	 *
+	 * @since 5.6.0
+	 * @param  string $context What the value is for. Valid values are 'view' and 'edit'.
+	 * @return string
+	 */
+	public function get_shipping_phone( $context = 'view' ) {
+		return $this->get_address_prop( 'phone', 'shipping', $context );
+	}
+
+	/**
 	 * Is the user a paying customer?
 	 *
 	 * @since  3.0.0
@@ -900,18 +929,18 @@ class WC_Customer extends WC_Legacy_Customer {
 	 * Sets a prop for a setter method.
 	 *
 	 * @since 3.0.0
-	 * @param string $prop    Name of prop to set.
-	 * @param string $address Name of address to set. billing or shipping.
-	 * @param mixed  $value   Value of the prop.
+	 * @param string $prop         Name of prop to set.
+	 * @param string $address_type Type of address; 'billing' or 'shipping'.
+	 * @param mixed  $value        Value of the prop.
 	 */
-	protected function set_address_prop( $prop, $address, $value ) {
-		if ( array_key_exists( $prop, $this->data[ $address ] ) ) {
+	protected function set_address_prop( $prop, $address_type, $value ) {
+		if ( array_key_exists( $prop, $this->data[ $address_type ] ) ) {
 			if ( true === $this->object_read ) {
-				if ( $value !== $this->data[ $address ][ $prop ] || ( isset( $this->changes[ $address ] ) && array_key_exists( $prop, $this->changes[ $address ] ) ) ) {
-					$this->changes[ $address ][ $prop ] = $value;
+				if ( $value !== $this->data[ $address_type ][ $prop ] || ( isset( $this->changes[ $address_type ] ) && array_key_exists( $prop, $this->changes[ $address_type ] ) ) ) {
+					$this->changes[ $address_type ][ $prop ] = $value;
 				}
 			} else {
-				$this->data[ $address ][ $prop ] = $value;
+				$this->data[ $address_type ][ $prop ] = $value;
 			}
 		}
 	}
@@ -1115,6 +1144,16 @@ class WC_Customer extends WC_Legacy_Customer {
 	 */
 	public function set_shipping_country( $value ) {
 		$this->set_address_prop( 'country', 'shipping', $value );
+	}
+
+	/**
+	 * Set shipping phone.
+	 *
+	 * @since 5.6.0
+	 * @param string $value Shipping phone.
+	 */
+	public function set_shipping_phone( $value ) {
+		$this->set_address_prop( 'phone', 'shipping', $value );
 	}
 
 	/**

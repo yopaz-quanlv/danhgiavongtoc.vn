@@ -9,6 +9,7 @@ namespace Automattic\WooCommerce\RestApi;
 
 defined( 'ABSPATH' ) || exit;
 
+use Automattic\WooCommerce\Proxies\LegacyProxy;
 use Automattic\WooCommerce\RestApi\Utilities\SingletonTrait;
 
 /**
@@ -29,15 +30,22 @@ class Server {
 	 */
 	public function init() {
 		add_action( 'rest_api_init', array( $this, 'register_rest_routes' ), 10 );
+
+		\WC_REST_System_Status_V2_Controller::register_cache_clean();
 	}
 
 	/**
 	 * Register REST API routes.
 	 */
 	public function register_rest_routes() {
+		$container    = wc_get_container();
+		$legacy_proxy = $container->get( LegacyProxy::class );
 		foreach ( $this->get_rest_namespaces() as $namespace => $controllers ) {
 			foreach ( $controllers as $controller_name => $controller_class ) {
-				$this->controllers[ $namespace ][ $controller_name ] = new $controller_class();
+				$this->controllers[ $namespace ][ $controller_name ] =
+					$container->has( $controller_class ) ?
+					$container->get( $controller_class ) :
+					$legacy_proxy->get_instance_of( $controller_class );
 				$this->controllers[ $namespace ][ $controller_name ]->register_routes();
 			}
 		}
@@ -52,9 +60,10 @@ class Server {
 		return apply_filters(
 			'woocommerce_rest_api_get_rest_namespaces',
 			array(
-				'wc/v1' => $this->get_v1_controllers(),
-				'wc/v2' => $this->get_v2_controllers(),
-				'wc/v3' => $this->get_v3_controllers(),
+				'wc/v1'        => $this->get_v1_controllers(),
+				'wc/v2'        => $this->get_v2_controllers(),
+				'wc/v3'        => $this->get_v3_controllers(),
+				'wc-telemetry' => $this->get_telemetry_controllers(),
 			)
 		);
 	}
@@ -140,6 +149,7 @@ class Server {
 			'coupons'                  => 'WC_REST_Coupons_Controller',
 			'customer-downloads'       => 'WC_REST_Customer_Downloads_Controller',
 			'customers'                => 'WC_REST_Customers_Controller',
+			'layout-templates'         => 'WC_REST_Layout_Templates_Controller',
 			'network-orders'           => 'WC_REST_Network_Orders_Controller',
 			'order-notes'              => 'WC_REST_Order_Notes_Controller',
 			'order-refunds'            => 'WC_REST_Order_Refunds_Controller',
@@ -176,6 +186,17 @@ class Server {
 			'data-continents'          => 'WC_REST_Data_Continents_Controller',
 			'data-countries'           => 'WC_REST_Data_Countries_Controller',
 			'data-currencies'          => 'WC_REST_Data_Currencies_Controller',
+		);
+	}
+
+	/**
+	 * List of controllers in the telemetry namespace.
+	 *
+	 * @return array
+	 */
+	protected function get_telemetry_controllers() {
+		return array(
+			'tracker' => 'WC_REST_Telemetry_Controller',
 		);
 	}
 
