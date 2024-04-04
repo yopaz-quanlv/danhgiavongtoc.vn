@@ -228,6 +228,17 @@ register_post_type('dich-vu', [
 	]
 ]);
 
+register_post_type('du-an', [
+	'label' => "Dự án",
+	'public' => true,
+	'supports' => [
+		'title',
+		'editor',
+		'excerpt',
+		'thumbnail'
+	]
+]);
+
 register_post_type('doi-ngu', [
 	'label' => "Đội ngũ",
 	'public' => true,

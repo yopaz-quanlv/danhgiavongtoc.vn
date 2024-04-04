@@ -49,7 +49,7 @@ get_header();
                             <h3 class="widget-title">Dự án nổi bật</h3>
                             <ul>
                                 <?php
-                                    $products = get_posts(['post_type' => 'product']);
+                                    $products = get_posts(['post_type' => 'du-an']);
                                 ?>
                                 <?php foreach ($products as $key => $post): ?>
                                     <li><a href="<?php  the_permalink(); ?>">

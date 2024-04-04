@@ -64,7 +64,7 @@ get_template_part('slider');
 				<div class="col-md-12">
 					<div class="owl-carousel owl-theme">
 						<?php $slides = get_posts([
-							'post_type' => 'product'
+							'post_type' => 'du-an'
 						]);
 
 						// print_r($slides);
