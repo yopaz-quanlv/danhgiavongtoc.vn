@@ -1,4 +1,88 @@
 <?php
+
+
+	class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
+
+		// Hàm bắt đầu (start) của một phần tử menu
+		public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+			$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
+			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+			$classes[] = 'menu-item-' . $item->ID;
+
+			$args = (object) $args;
+
+			// Kiểm tra nếu menu có thêm dropdown
+			$has_children = !empty($args->has_children) ? ' dropdown' : '';
+
+			// Xác định nếu mục hiện tại có mục con
+			$args->li_class_names = $has_children ? 'nav-item dropdown' : 'nav-item';
+
+			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
+			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+
+			// Tạo ID cho mục menu
+			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args, $depth );
+			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
+
+			// Xây dựng phần tử menu
+			$output .= $indent . '<li' . $id . $class_names .'>';
+
+			$atts = array();
+			$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
+			$atts['target'] = ! empty( $item->target )     ? $item->target     : '';
+			$atts['rel']    = ! empty( $item->xfn )        ? $item->xfn        : '';
+			$atts['href']   = ! empty( $item->url )        ? $item->url        : '';
+
+			// Kiểm tra nếu mục có thêm dropdown
+			if($has_children){
+				$atts['class'] = 'nav-link dropdown-toggle';
+				$atts['data-toggle'] = 'dropdown';
+				$atts['aria-haspopup'] = 'true';
+				$atts['aria-expanded'] = 'false';
+			} else {
+				$atts['class'] = 'nav-link';
+			}
+
+			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
+
+			$attributes = '';
+			foreach ( $atts as $attr => $value ) {
+				if ( ! empty( $value ) ) {
+					$value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+					$attributes .= ' ' . $attr . '="' . $value . '"';
+				}
+			}
+
+			$title = apply_filters( 'the_title', $item->title, $item->ID );
+
+			// Tạo link cho mục menu
+			$item_output = $args->before;
+			$item_output .= '<a' . $attributes . '>';
+			$item_output .= $args->link_before . $title . $args->link_after;
+			$item_output .= '</a>';
+			$item_output .= $args->after;
+
+			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+		}
+
+		// Hàm bắt đầu (start) của một phần tử mục menu có dropdown
+		public function start_lvl( &$output, $depth = 0, $args = null ) {
+			$indent = str_repeat( "\t", $depth );
+			$output .= "\n$indent<ul class=\"dropdown-menu\">\n";
+		}
+
+		// Hàm kết thúc (end) của một phần tử mục menu
+		public function end_el( &$output, $item, $depth = 0, $args = null ) {
+			$output .= "</li>\n";
+		}
+
+		// Hàm kết thúc (end) của một phần tử mục menu có dropdown
+		public function end_lvl( &$output, $depth = 0, $args = null ) {
+			$indent = str_repeat( "\t", $depth );
+			$output .= "$indent</ul>\n";
+		}
+	}
 /**
  * The header for our theme
  *
@@ -92,76 +176,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		}
 		wp_reset_postdata();
 
-		$menu = [
-			// [
-			// 	'title' => 'Trang chủ',
-			// 	'url' => '/',
-			// ],
-           [
-				'title' => 'Trang chủ',
-				'url' => '/',
-			],
-			[
-				'title' => 'Giới thiệu',
-				'url' => '/gioi-thieu',
-			],
-			[
-				'title' => 'Sản phẩm',
-				'url' => '/dich-vu',
-				'children' => [
-						[
-							'title' => 'Thiết kế',
-							'url' => '/dich-vu/thiet-ke/',
-						],
-						[
-							'title' => 'Thi công',
-							'url' => '/dich-vu/thi-cong/',
-						],
-					    [
-							'title' => 'Thiết kế bộ nhận diện',
-							'url' => '/dich-vu/thiet-ke-bo-nhan-dien/',
-						],
-					]
-			],
-			// [
-			// 				'title' => 'Bảng giá',
-			// 				'url' => '/bang-gia',
-			// 			],
-			// [
-			// 	'title' => 'Dự án',
-			// 	'url' => '/danh-sach-du-an/gaming-center/',
-			// ],
-			[
-				'title' => 'Nghệ nhân',
-				'url' => '/nghe-nhan',
-			],
-			[
-				'title' => 'Tin tức',
-				'url' => '/blog',
-				
-			],
-			[
-				'title' => 'Liên hệ',
-				'url' => '/lien-he',
-			],
-		];
+		wp_nav_menu(array(
+			'theme_location' => 'menu-1', // Sử dụng menu đã đăng ký có tên là 'primary-menu'.
+			'menu_id' => 'primary-menu', // ID của menu.
+			'menu_class' => 'navbar-nav ml-auto', // Lớp CSS của menu.
+			'container' => false, // Không sử dụng container cho menu.
+			'depth' => 2, // Số cấp menu tối đa.
+			'fallback_cb' => false, // Không có callback nếu menu không tồn tại.
+			'walker' => new WP_Bootstrap_Navwalker(), // Sử dụng walker cho menu, điều này cần được khai báo trước.
+		));
 	?>
-	<ul id="primary-menu" class="navbar-nav ml-auto">
-	<?php foreach ($menu as $key => $item): ?>
-		<?php if (isset($item['children'])): ?>
-			<li class="nav-item dropdown"> <a class="nav-link"  href="<?php echo $item['url'] ?>"> <?php echo $item['title'] ?> <i class="ti-angle-down"></i></a>
-                    <ul class="dropdown-menu last">
-						<?php foreach ($item['children'] as $item2): ?>
-							<li class="dropdown-item"><a href="<?php echo $item2['url'] ?>"><?php echo $item2['title'] ?></a></li>
-						<?php endforeach; ?>
-                    </ul>
-                </li>
-		<?php else: ?>
-			<li class="menu-item"><a class="nav-link" href="<?php echo $item['url'] ?>"><?php echo $item['title'] ?></a></li>
-		<?php endif; ?>
-
-	<?php endforeach; ?>
-	</ul>
+	
 </div>
 
 </nav>

@@ -27,9 +27,9 @@
 		<!-- Left Panel -->
 		<div class="left-panel">
 			<ul class="social-left clearfix">
-				<li><a href="https://www.pinterest.com/rulaesportsvietnam/"><i class="ti-pinterest"></i></a></li>
-				<li><a href="https://www.instagram.com/rulaesportsvn/"><i class="ti-instagram"></i></a></li>
-				<li><a href="https://www.facebook.com/rulaesportsvn/"><i class="ti-facebook"></i></a></li>
+				<!-- <li><a href="https://www.pinterest.com/rulaesportsvietnam/"><i class="ti-pinterest"></i></a></li> -->
+				<!-- <li><a href="https://www.instagram.com/rulaesportsvn/"><i class="ti-instagram"></i></a></li> -->
+				<!-- <li><a href="https://www.facebook.com/rulaesportsvn/"><i class="ti-facebook"></i></a></li> -->
 			</ul>
 		</div>
 	</header>
