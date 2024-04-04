@@ -155,7 +155,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="logo">
 			<a href="/">
 				<img src="/wp-content/uploads/2021/06/op6.svg" class="logo-img" alt="">
-				<h2>RULA<span>ARCHITECTS · CONSTRUCTS</span></h2>
 			</a>
 		</div>
 	</div>
@@ -165,16 +164,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 	<?php
-
-		$projects = get_terms('product_cat');
-		$projectsMenu = [];
-		foreach ($projects as $term) {
-			$projectsMenu[] = [
-				'url' => get_term_link($term),
-				'title' => $term->name
-			];
-		}
-		wp_reset_postdata();
 
 		wp_nav_menu(array(
 			'theme_location' => 'menu-1', // Sử dụng menu đã đăng ký có tên là 'primary-menu'.
