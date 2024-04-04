@@ -57,10 +57,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
 		<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
 	</svg>
-	<a href="tel:+0932268778 " class="" style="margin-bottom: 10px;">
+	<a href="tel:0932268778" class="" style="margin-bottom: 10px;">
 		<img src="/icon-phone.png" alt="">
 	</a>
-	<a href="https://zalo.me/0932268778 " target="_blank" class="">
+	<a href="https://zalo.me/0932268778" target="_blank" class="">
 		<img src="/icon-zalo.png" alt="">
 	</a>
 </div>
