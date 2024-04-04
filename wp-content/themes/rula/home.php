@@ -30,7 +30,7 @@ get_template_part('slider');
 				<div class="col-md-6 mb-30 ">
 					<h2 class="section-title" style="text-align: center;font-size: 24px;"><span>TẬP ĐOÀN <br>DANH GIA VỌNG TỘC</span></h2>
 					<div class="about-img">
-						<div class="img"> <img src="https://danhgiavongtoc.vn/wp-content/uploads/2024/03/Hung-Thinh-1.jpg" class="img-fluid" alt=""> </div>
+						<div class="img"> <img src="https://danhgiavongtoc.vn/wp-content/uploads/2024/04/z5314988611216_45576ca6ea3ffe14bee090c4e1608a91.jpg" class="img-fluid" alt=""> </div>
 						<div class="about-img-2 about-buro">Danh gia vọng tộc</div>
 					</div>
 					
