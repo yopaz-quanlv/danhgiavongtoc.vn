@@ -1,7 +1,4 @@
 <?php
-function dd ($variable) {
-    print_r($variable); die;
-}
 /**
  * Front to the WordPress application. This file doesn't do anything, but loads
  * wp-blog-header.php which does and tells WordPress to load the theme.
