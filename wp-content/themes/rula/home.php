@@ -27,16 +27,27 @@ get_template_part('slider');
 	<section class="about section-padding">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
-					<h2 class="section-title"><span>DANH GIA VỌNG TỘC</span></h2>
-					<p>Danh gia vong toc la abc xyz.<br/>
-			</p>
-				</div>
-				<div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
+				<div class="col-md-6 mb-30 ">
+					<h2 class="section-title" style="text-align: center;font-size: 24px;"><span>TẬP ĐOÀN <br>DANH GIA VỌNG TỘC</span></h2>
 					<div class="about-img">
 						<div class="img"> <img src="https://danhgiavongtoc.vn/wp-content/uploads/2024/03/Hung-Thinh-1.jpg" class="img-fluid" alt=""> </div>
 						<div class="about-img-2 about-buro">Danh gia vọng tộc</div>
 					</div>
+					
+			</p>
+				</div>
+				<div class="col-md-6 ">
+				<p>DANH GIA VỌNG TỘC là nơi hội tụ những nghệ nhân thủ công mỹ nghệ hàng đầu Việt Nam, là hiện thân của văn hóa truyền thống dân tộc. <br>
+
+					Mỗi tác phẩm của các nghệ nhân DANH GIA VỌNG TỘC được chế tác ngoài yếu tố nghệ thuật còn đảm bảo các yếu tố: <span style="color: #fcec03">TÀI NĂNG - TÂM HUYẾT - TINH HOA - SÁNG TẠO.</span><br>
+
+					Sự sáng tạo của các nghệ nhân sẽ mang lại cho khách hàng những trải nghiệm mới lạ thông qua từng hoa văn, hoạ tiết, kiểu dáng nhằm truyền tải trong đó những câu chuyện, thông điệp ý nghĩa.<br>
+
+					Tác phẩm được chế tác bởi các nghệ nhân "bàn tay vàng" của DANH GIA VỌNG TỘC có kinh nghiệm và tài năng mang lại vẻ đẹp sang trọng và độc đáo cho không gian sống thể hiện đẳng cấp thượng lưu của giới tinh hoa.<br>
+
+					Mỗi tác phẩm sẽ có những hoa văn, hoạ tiết độc đáo, được chế tác từ những chất liệu cao cấp và có thiết kế sang trọng, phù hợp cho việc trang trí trong không gian sống và làm việc.<br>
+
+					Các tác phẩm của DANH GIA VỌNG TỘC phù hợp để sưu tầm hoặc làm quà biếu tặng cho người thân, bạn bè, đối tác hoặc lãnh đạo  thể hiện sự tinh tế, đẳng cấp.<br>
 				</div>
 			</div>
 		</div>
@@ -45,7 +56,7 @@ get_template_part('slider');
 	<section class="projects section-padding2">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+				<div class="col-md-12 ">
 					<h2 class="section-title">Dự án</h2>
 				</div>
 			</div>

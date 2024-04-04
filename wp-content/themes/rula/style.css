@@ -108,20 +108,20 @@ body {
     word-wrap: break-word;
 }
 body {
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
     font-size: 16px;
     font-weight: 400;
     line-height: 1.75em;
-    color: #999;
+    color: #fff;
     overflow-x: hidden !important;
     background: #272727;
 }
 p {
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
     font-size: 16px;
     font-weight: 400;
     line-height: 1.75em;
-    color: #999;
+    color: #fff;
     margin-bottom: 20px;
 }
 h1,
@@ -193,7 +193,7 @@ textarea {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: #999;
+    color: #fff;
     background-image: none;
     border-bottom: 1px solid #323232;
     border-color: ease-in-out .15s, box-shadow ease-in-out .15s;
@@ -221,7 +221,7 @@ input[type="reset"]:hover,
 input[type="button"]:hover,
 button:hover {
     background-color: #323232;
-    color: #999;
+    color: #fff;
     border: 1px solid transparent;
 }
 select {
@@ -245,22 +245,22 @@ input[type="checkbox"] {
 }
 /* Placeholder */
 ::-webkit-input-placeholder {
-    color: #999;
+    color: #fff;
     font-size: 15px;
     font-weight: 400;
 }
 
 :-moz-placeholder {
-    color: #999;
+    color: #fff;
 }
 
 ::-moz-placeholder {
-    color: #999;
+    color: #fff;
     opacity: 1;
 }
 
 :-ms-input-placeholder {
-    color: #999;
+    color: #fff;
 }
 
 
@@ -313,15 +313,15 @@ input[type="checkbox"] {
 
 /* ======= Selection style ======= */
 ::-webkit-selection {
-    color: #999;
+    color: #fff;
     background: rgba(0, 0, 0, 0.1);
 }
 ::-moz-selection {
-    color: #999;
+    color: #fff;
     background: rgba(0, 0, 0, 0.1);
 }
 ::selection {
-    color: #999;
+    color: #fff;
     background: rgba(0, 0, 0, 0.1);
 }
 
@@ -466,7 +466,7 @@ h3 {
 }
 .nav-scroll .navbar-nav .logo {
     padding: 15px 0;
-    color: #999;
+    color: #fff;
 }
 .nav-scroll .logo {
     width: 100px;
@@ -521,7 +521,7 @@ h3 {
     margin-bottom: 0;
 }
 .logo-wrapper .logo h2 a i {
-    color: #999;
+    color: #fff;
     font-size: 20px;
     vertical-align: super;
 }
@@ -529,7 +529,7 @@ h3 {
     display: block;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
-    color: #999;
+    color: #fff;
     font-weight: 400;
     letter-spacing: 1px;
     display: block;
@@ -900,7 +900,7 @@ h3 {
     text-align: center;
     font-size: 13px;
     border: 1px solid #999;
-    color: #999;
+    color: #fff;
     border-radius: 100%;
     -webkit-transition: all .4s;
     -o-transition: all .4s;
@@ -964,7 +964,7 @@ h3 {
     font-size: 20px;
     font-weight: 400;
     margin-bottom: 0;
-    color: #999;
+    color: #fff;
     -webkit-animation-delay: 1s;
     animation-delay: 1s;
 }
@@ -992,7 +992,7 @@ h3 {
     .banner-header h1 {}
     .banner-header p {
         font-size: 20px;
-        color: #999;
+        color: #fff;
     }
 }
 .banner-img:after {
@@ -1129,7 +1129,7 @@ h3 {
 }
 .team .info p {
     margin-bottom: 5px;
-    color: #999;
+    color: #fff;
 }
 .team .info .social {
     position: absolute;
@@ -1258,7 +1258,7 @@ h3 {
     position: relative;
     line-height: 48px;
     font-size: 16px;
-    color: #999;
+    color: #fff;
     font-weight: 300;
     margin-bottom: 5px;
 }
@@ -1292,7 +1292,7 @@ h3 {
     position: relative;
     display: block;
     font-size: 16px;
-    color: #999;
+    color: #fff;
     font-weight: 400;
     transition: all 0.3s ease;
     z-index: 1;
@@ -1403,7 +1403,7 @@ h3 {
 .projects .item .con .butn-light {
     margin-left: 0;
     border-radius: 30px;
-    border-color: #999;
+    border-color: #fff;
     padding: 11px 30px;
 }
 .projects .item .con .butn-light:hover {
@@ -1446,7 +1446,7 @@ h3 {
 .projects-prev-next a {
     display: inline-block;
     font-size: 16px;
-    color: #999;
+    color: #fff;
     line-height: 1em;
 }
 .projects-prev-next a i {
@@ -1674,7 +1674,7 @@ button.mfp-arrow {
 }
 .testimonials-box .head-box h6 {
     font-weight: 400;
-    color: #999;
+    color: #fff;
     font-size: 17px;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -1711,7 +1711,7 @@ button.mfp-arrow {
     opacity: .05;
 }
 .testimonials .item p {
-    color: #999;
+    color: #fff;
 }
 .testimonials .item .info {
     text-align: left;
@@ -1737,7 +1737,7 @@ button.mfp-arrow {
 }
 .testimonials .item .info span {
     font-size: 16px;
-    color: #999;
+    color: #fff;
     margin-right: 5px;
     line-height: 1.25em;
 }
@@ -1846,7 +1846,7 @@ button.mfp-arrow {
     height: 40px;
     line-height: 38px;
     text-align: center;
-    color: #999;
+    color: #fff;
     font-weight: 300;
     border: 1px solid #323232;
     font-family: 'Montserrat', sans-serif;
@@ -1893,7 +1893,7 @@ button.mfp-arrow {
 }
 .RULA-comment-section h3 span {
     font-size: 12px;
-    color: #999;
+    color: #fff;
     font-weight: 400;
     margin-left: 15px;
 }
@@ -2044,7 +2044,7 @@ button.mfp-arrow {
     text-align: center;
     font-size: 12px;
     border: 1px solid #373737;
-    color: #999;
+    color: #fff;
     border-radius: 100%;
     margin-right: 3px;
     -webkit-transition: all .4s;
@@ -2088,7 +2088,7 @@ button.mfp-arrow {
 }
 .main-footer .sub-footer p {
     font-size: 14px;
-    color: #999;
+    color: #fff;
     margin-top: 7px;
 }
 .main-footer .sub-footer p a:hover {
@@ -2347,7 +2347,7 @@ button.mfp-arrow {
     cursor: pointer;
     padding: 20px 40px;
     padding-right: 60px;
-    color: #999;
+    color: #fff;
     transition: all 500ms ease;
     font-family: 'Montserrat', sans-serif;
 }
@@ -2384,7 +2384,7 @@ button.mfp-arrow {
   position: relative;
     padding: 0px 40px 30px;
     background-color: #323232;
-    color: #999;
+    color: #fff;
 }
 .accordion-box .block .acc-content.current {
   display: block;
@@ -2432,7 +2432,7 @@ button.mfp-arrow {
     color: #fcec03;
 }
 .pricing-card-list li i.unavailable {
-  color: #999;
+  color: #fff;
 }
 .pricing-card:hover {
   opacity: 1;
@@ -2529,7 +2529,7 @@ button.mfp-arrow {
  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   background: #323232;
-  color: #999;
+  color: #fff;
   border-radius: 7px;
   border: 1px solid #323232;
   transition: all 300ms ease;
@@ -2551,7 +2551,7 @@ button.mfp-arrow {
     line-height: 40px;
     font-size: 20px;
     background: none;
-    color: #999;
+    color: #fff;
 }
 .error-form .form-group .theme-btn span {
   vertical-align: middle;
@@ -2596,7 +2596,7 @@ button.mfp-arrow {
         margin: 0px auto !important;
     }
     .navbar .navbar-nav .nav-link {
-        color: #999;
+        color: #fff;
     }
     .nav-scroll .navbar-collapse .nav-link {
         color: #999 !important;
@@ -2644,11 +2644,11 @@ button.mfp-arrow {
         margin: 0;
     }
     .dropdown .mega-menu .dropdown-title {
-        border-bottom-color: #999;
+        border-bottom-color: #fff;
     }
     .dropdown-menu .dropdown-item,
     .sub-menu .dropdown-item {
-        color: #999;
+        color: #fff;
     }
     .header {
         background-attachment: scroll !important;

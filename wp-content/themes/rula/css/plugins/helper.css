@@ -422,17 +422,17 @@ h1, h2, h3, h4, h5, h6 {
 [data-overlay-light] h5,
 [data-overlay-light] h6,
 [data-overlay-light] span {
-  color: #999;
+  color: #fff;
 }
 
 [data-overlay-dark] p {
-  color: #999;
+  color: #fff;
 }
 [data-overlay-darkgray] p {
-  color: #999;
+  color: #fff;
 }
 [data-overlay-light] p {
-  color: #999;
+  color: #fff;
 }
 
 [data-overlay-dark="0"]:before,
