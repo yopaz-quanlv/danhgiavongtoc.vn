@@ -32,8 +32,11 @@
 		 						<div class="col-md-7 offset-md-5">
 		 							<div class="o-hidden">
 		 								<h3><?php echo the_title() ?></h3>
+										<div>
+											<?php echo the_excerpt() ?>
+										</div>
 
-										<div class="butn-light mt-30 mb-30"><a href="<?php echo get_post_custom_value('url') ?>"><span>Chi tiết</span></a></div>
+										<div class="butn-light mt-30 mb-30"><a href="<?php echo get_field('url') ?>"><span>Chi tiết</span></a></div>
 		 							</div>
 		 						</div>
 		 					</div>
