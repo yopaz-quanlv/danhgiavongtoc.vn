@@ -206,7 +206,7 @@ get_header();
 						<div class="fothead">
 							<h6>Địa chỉ</h6>
 						</div>
-						<p>Tầng 4 - số 119 Nguyễn Ngọc Nại - Thanh Xuân Hà Nội - Việt Nam</p>
+						<p>Khu phố Kim Thiều - Phường Hương Mạc - Thành phố Từ Sơn - Bắc Ninh</p>
 					</div>
 				</div>
 			</div>
