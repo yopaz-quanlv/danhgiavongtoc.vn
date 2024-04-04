@@ -154,7 +154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<div class="logo-wrapper valign">
 		<div class="logo">
 			<a href="/">
-				<img src="/wp-content/uploads/2021/06/op6.svg" class="logo-img" alt="">
+				<img src="https://danhgiavongtoc.vn/wp-content/uploads/2024/04/logo-danh-gia-vong-toc.png" class="logo-img" alt="">
 			</a>
 		</div>
 	</div>
